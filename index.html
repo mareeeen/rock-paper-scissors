@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+
+</head>
+<body>
+
+
+<section id="main-section">
+  <section class="scoreboard">
+    <div class="header">
+    <img src="./images/logo.svg" alt="">
+    </div>
+
+    <div class="score">
+      <p>SCORE</p>
+      <span id="score"></span>
+    </div>
+  </section>
+
+  <section class="main-game" id="picks">
+
+    <button class="paper" onclick="game(this.value)" value="paper">
+      <img src="./images/icon-paper.svg" alt="" srcset="">
+    </button>
+
+    <button class="scissors" onclick="game(this.value)" value="scissors">
+      <img src="./images/icon-scissors.svg" alt="" srcset="">
+    </button>
+
+    <button class="rock" onclick="game(this.value)" value="rock">
+      <img src="./images/icon-rock.svg" alt="">
+    </button>
+
+  </section>
+
+
+  <section>
+
+    <div class="who" id="who">
+      <p id="you-picked">YOU PICKED</p>
+      <p>THE HOUSE PICKED</p>
+    </div>
+  
+
+  <div class="container" id="container">
+
+    <div class="left" id="right"></div>
+    <div class="right" id="left"></div>
+
+  
+    <div id="challenge">
+  
+      <div id="you">
+        
+        <button id="yourObject"></button>
+      </div>
+      <div class="column">
+        <div id="result"></div>
+        <button id="continue" onclick="continueGame()">PLAY AGAIN</button>
+      </div>
+      <div id="com">
+        
+        <button id="comObject"></button>
+      </div>
+    
+
+    </div>
+  </div>
+  </section>
+
+
+
+</section>
+
+
+<section class="rules">
+    <button id="rules-btn" class="rules-btn" onclick="openImg()">RULES</button>
+ 
+    <div id="rules" class="rules-section">
+      <div class="top">
+        <p>RULES</p>
+        <button onclick="closeImg()"><img src="./images/icon-close.svg" alt=""></i></button>
+     </div>
+      <img src="./images/image-rules.svg" alt="">
+    </div>
+</section>
+
+  <script type="text/javascript" src="./js.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</body>
+</html>

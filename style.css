@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap');
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }  
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }  
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: .2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: .2;
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+
+
+
+* {
+    margin: 0;
+    font-family: 'Barlow Semi Condensed';
+}
+
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-image: radial-gradient(hsl(214, 47%, 23%),hsl(237, 49%, 15%));
+    background-repeat: no-repeat;
+    color: #fff;
+    overflow: hidden;
+} 
+
+.scoreboard {
+    margin: auto;
+    margin-top: 40px;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    height: 100px;
+    border: 4px solid hsl(217, 16%, 45%);
+    border-radius: 10px;
+}
+
+.header {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 0.8;
+}
+
+.score {
+    background-color: #fff;
+    color: hsl(229, 25%, 31%);
+    height: 80px;
+    width: 100px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
+.score p {
+font-weight: 700;
+padding-top: 5px;
+opacity: 0.9;
+}
+
+.score span {
+    font-size: 40px;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.main-game {
+    display: grid;
+    grid-template-areas: "paper scissors" "rock rock";
+    grid-template-rows: 9.375rem 9.375rem;
+    grid-gap: 100px;
+    background: url('./images/bg-triangle.svg') center center no-repeat;
+    margin: 80px 200px 0 200px;
+}
+
+.main-game button {
+    cursor: pointer;
+    border-radius: 50%;
+    height: 100%;
+    width: 150px;
+    outline: none;
+}
+
+.main-game button:hover {
+    transition: .2s transform;
+    transform: scale(1.05);
+}
+
+
+
+.paper {
+    grid-area: paper;
+    justify-self: end;
+    border: solid 15px transparent;
+   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg,hsl(230, 89%, 62%), hsl(230, 89%, 65%) );
+   background-origin: border-box;
+   background-clip: content-box, border-box;
+   box-shadow: 0 0.3125rem 0 0 hsl(230, 63%, 47%), 2px 1000px 1px #fff inset;
+}
+
+.scissors {
+    grid-area: scissors;
+    justify-self: start;
+    border: solid 15px transparent;
+   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+   background-origin: border-box;
+   background-clip: content-box, border-box;
+   box-shadow: 0 0.3125rem 0 0 hsl(29, 79%, 44%), 2px 1000px 1px #fff inset;
+}
+
+.rock {
+   grid-area: rock; 
+   justify-self: center;
+   border: solid 15px transparent;
+   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+   background-origin: border-box;
+   background-clip: content-box, border-box;
+   box-shadow: 0 0.3125rem 0 0 hsl(347, 76%, 35%), 2px 1000px 2px #fff inset;
+}
+
+.who {
+    justify-content: space-between;
+    margin-top: 110px;
+    font-size: 25px ;
+    font-weight: 700;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    width: 900px;
+    display: none;
+    letter-spacing: .3rem;
+    text-align: center;
+    color: hsl(217, 16%, 45%);
+}
+
+#you-picked {
+    padding-left: 30px;
+}
+
+
+
+
+.container {
+    display: none;
+    height: 90vh;
+    width: 100%;
+    grid-template-columns: 1fr  1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "left  right";
+   
+}
+
+.left {
+    visibility: hidden;
+    grid-area: left ;
+    background-image: radial-gradient(#2c3e5a 0% 40%, hsla(218, 36%, 25%, 0.781) 40% 60%, hsla(218, 43%, 24%, 0.473) 60%);
+    border-radius: 50%;
+    animation: 1.5s fadeInOut linear infinite;
+}
+
+.right {
+    visibility: hidden;
+    grid-area: right;
+    background-image: radial-gradient(#2c3e5a 0% 40%, hsla(218, 36%, 25%, 0.781) 40% 60%, hsla(218, 43%, 24%, 0.473) 60%);
+    border-radius: 50%;
+    animation: 1.5s fadeInOut linear infinite;
+}
+
+#challenge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: auto;
+    display: none;
+    font-weight: 700;
+    font-size: 50px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+
+#challenge #yourObject, #comObject {
+    background: #fff;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    outline: none;
+    animation: scaleUp 0.3s linear;
+    transition: transform 1s;
+}
+
+
+#challenge #yourObject:hover, #comObject:hover {
+    transform: rotate(360deg);
+}
+
+.column {
+    width: 200px;
+    text-align: center;
+}
+
+
+#continue {
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    height: 50px;
+    width: 100%;
+    color: hsl(229, 25%, 31%);
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    cursor: pointer;
+    -webkit-transition: color  .5s ease-out;
+    -moz-transition: color .5s ease-out;
+    -o-transition: color  .5s ease-out;
+    transition: color  .5s ease-out;
+}
+
+#continue:hover{
+    color: hsl(349, 71%, 52%);
+}
+
+
+
+
+.rules-section {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    display: none;
+    animation: 0.5s fadeIn linear;
+}
+
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.top p {
+    color: hsl(214, 47%, 23%);
+    font-size: 25px;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+}
+
+.top button {
+    outline: none;
+    border: none;
+    background: none;
+    font-weight: 700;
+    font-size: 25px;
+    color:hsl(217, 16%, 45%);
+    cursor: pointer;
+}
+
+
+.rules-btn {
+    margin: 100px 50px 50px 50px;
+    right: 0;
+    height: 40px;
+    width: 100px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    position: fixed;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
